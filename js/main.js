@@ -46,4 +46,7 @@ searchMovie.onclick = function(event) {
 searchID.onclick = function(event) {
     event.preventDefault();
     console.log("The Search by ID Button has been clicked!!!");
+
+    const valueID = inputElement.value
+    console.log("Value: ", valueID)
 }
