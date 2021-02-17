@@ -6,6 +6,8 @@
 const inputElement = document.querySelector("#inputValue");
 const searchMovie = document.querySelector("#searchMovie");
 const searchID = document.querySelector("#searchID");
+const searchGenre = document.querySelector("#searchGenre");
+const searchActors = document.querySelector("#searchActors");
 
 // Recursos API
 
@@ -17,7 +19,8 @@ let criterio = "movie";
 
 let base_url = `https://api.themoviedb.org/3/`    // URL BASE
 
-let urlID = "https://api.themoviedb.org/3/movie/59305?api_key=bb78e4cf3442e302d928f2c5edcdbee1"  // SEARCH BY ID
+
+  // URL GENERO
 
 
 // Funciones:
@@ -44,7 +47,7 @@ searchMovie.onclick = function(event) {
         .then((res) => res.json())
         .then((data) => {
             // data.results []
-            console.log("Data: ", data.results);
+            console.log("Data: ", data.results); // pasarlos por funcion pintar
         })
         .catch((error) => {
             console.log("Error", error);
@@ -69,9 +72,77 @@ searchID.onclick = function(event) {
         .then((res) => res.json())
         .then((data) => {
             // data.results []
-            console.log("Data: ", data)
+            console.log("Data: ", data)   // pasarlos por funcion pintar
         })
         .catch((error) => {
         console.log("Error", error)
     });
-}
+};
+
+// Función Botón Search by Genre
+
+searchGenre.onclick = function(event) {
+    event.preventDefault();
+    console.log("The Search by Genre Button has been clicked!!!")
+
+    const valueGenre = inputElement.value
+    console.log("Value: ", valueGenre);
+    const data = inputElement.value
+    let query = data;
+
+    const urlSearchGenre = "https://api.themoviedb.org/3/genre/movie/list?api_key=bb78e4cf3442e302d928f2c5edcdbee1&language=en-US"
+
+    fetch(urlSearchGenre)
+        .then((res) => res.json())
+        .then((data) => {
+            // data.results []
+            console.log("Data: ", data.genres)   // pasarlos por funcion para pintar
+        })
+        .catch((error) => {
+        console.log("Error", error)
+    });
+
+    if(query === query) {
+        console.log(`La pelicula que has buscado es de ${query}`);
+    };
+};
+
+// Función Botón Search by Actors
+
+searchActors.onclick = function(event) {
+    event.preventDefault();
+    console.log("The Search by Actors Button has been clicked!!!")
+
+    const valueActors = inputElement.value
+    let query = valueActors;
+    console.log("Value: ", valueActors)
+
+    const urlActors = `https://api.themoviedb.org/3/person/${query}?api_key=bb78e4cf3442e302d928f2c5edcdbee1&language=en-US`
+
+    fetch(urlActors)
+        .then((res) => res.json())
+        .then((data) => {
+            // data.results []
+            console.log("Data: ", data.person)   // pasarlos por funcion pintar
+        })
+        .catch((error) => {
+        console.log("Error", error)
+    });
+
+    if(query === query) {
+        console.log(`El actor o actriz que has buscado es: ${query}`);
+    };
+};
+
+
+
+
+
+
+
+
+
+
+
+
+// let urlActors = `https://api.themoviedb.org/3/person/${query}?api_key=bb78e4cf3442e302d928f2c5edcdbee1&language=en-US`
