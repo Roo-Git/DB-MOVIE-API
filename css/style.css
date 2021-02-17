@@ -11,7 +11,13 @@
     margin-top: 2em;
     
 }
-h1, h2 {
+h1{
+    width: auto;
+    color: black;
+    font-weight: 10em;
+}
+
+h2 {
     width: auto;
     color: #0099ff;
     font-weight: 10em;

@@ -20,7 +20,6 @@ let criterio = "movie";
 let base_url = `https://api.themoviedb.org/3/`    // URL BASE
 
 
-  // URL GENERO
 
 
 // Funciones:
@@ -38,10 +37,8 @@ searchMovie.onclick = function(event) {
     let query = value;
     console.log("Value: ", value);
 
-
     const ulrSearchMovies = `${base_url}${recurso}/${criterio}?api_key=${key}&query=${query}`
 
-    // ${base_url}${recurso}/${criterio}?api_key=${key}&query=${query} //
     
     fetch(ulrSearchMovies)
         .then((res) => res.json())
@@ -135,14 +132,3 @@ searchActors.onclick = function(event) {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-// let urlActors = `https://api.themoviedb.org/3/person/${query}?api_key=bb78e4cf3442e302d928f2c5edcdbee1&language=en-US`
